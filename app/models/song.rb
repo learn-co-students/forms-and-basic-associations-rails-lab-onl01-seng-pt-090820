@@ -20,12 +20,16 @@ class Song < ActiveRecord::Base
     self.genre ? self.genre_id : nil
   end
 
-  def note_id=(id)
-    self.note = Note.find_or_create_by(id: id)
+  def notes=(contents)
+    #binding.pry
+    contents.each do |c|
+      #binding.pry
+    self.notes.build(Note.find_or_create_by(content: c))
+  end
   end
 
-  def note_id
-    # self.note_id ? self.note_id : nil
+  def notes
+   self.notes ? self.notes : nil
   end
 
 
